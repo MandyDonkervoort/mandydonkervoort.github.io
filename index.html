@@ -1,1 +1,51 @@
-"Helo World" 
+<html>
+<head>
+<title>Page Title</title>
+  <link rel="icon" href="images/icons/5hart.png" sizes="192x192">
+  <link rel="manifest" href="manifest.webmanifest.json" />
+  <link rel="manifest" href="manifest.json">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Mandy">
+<meta name="apple-mobile-web-app-title" content="Mandy">
+<meta name="theme-color" content="#FF0051">
+<meta name="msapplication-navbutton-color" content="#FF0051">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="msapplication-starturl" content="/">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script> 
+window.onload = function(){
+			
+				document.getElementById("btn").addEventListener(
+					"click",
+					function(ev){
+						let url = 'https://fakestoreapi.com/products';
+						fetch(url).then(
+							response => {
+								return response.json();
+							}
+						).then(
+							result => {
+								result = result.map(item=>`<li>${item.title}</li>`)
+									  .join('');
+								document.body.innerHTML += `<ul>${result}</ul>`;
+							}
+						).catch(
+							fout => {
+								console.log(`Ging iets fout: ${fout}`);
+							}
+						);
+					}
+				);
+			
+
+</script>
+
+</head>
+<body>
+
+<h1>Mandy's PWA</h1>
+<button id="btns">Klik hier voor kleding</button>
+</body>
+</html>

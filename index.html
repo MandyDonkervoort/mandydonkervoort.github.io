@@ -39,6 +39,41 @@
 						);
 					}
 				);
+				
+				
+				session = sessionStorage;
+		local = localStorage;
+		
+			if (session.getItem("naam"))
+		{
+			alert("Uw met sessionStorage opgeslagen naam is: " + session.getItem("naam"));
+		}
+		
+		// Controle of localStorage al gevuld is bij 'naam' entry				
+		if (local.getItem("naam"))
+		{
+			alert("Uw met localStorage opgeslagen naam is: " + local.getItem("naam"));
+		}
+		// Toevoegen actie button 1:
+		document.getElementById("btnSession").addEventListener("click",function(){
+			var invoer = document.getElementById("txtSession");
+			if (invoer != "")
+			{
+				// Instellen 'naam' entry met de waarde van het invoerveld					
+				session.setItem("naam", invoer.value);
+			}
+		},false);
+		
+		// Toevoegen actie button 2:
+		document.getElementById("btnLocal").addEventListener("click",function(){
+			var invoer = document.getElementById("txtLocal");
+			if (invoer != "")
+			{
+				// Instellen 'naam' entry met de waarde van het invoerveld
+				local.setItem("naam", invoer.value);
+			}
+		},false);
+		
       }
 
 			
@@ -49,6 +84,22 @@
 <body>
 
 <h1>Mandy's PWA</h1>
+<fieldset>
+			<caption>sessionStorage</caption>
+			Voer uw naam in:<br/>
+			<input type="text" id="txtSession" />
+			<button id="btnSession">Opslaan</button>
+		</fieldset>
+		
+		<fieldset>
+			<caption>localStorage</caption>
+			Voer uw naam in:<br/>
+			<input type="text" id="txtLocal" />
+			<button id="btnLocal">Opslaan</button>
+		</fieldset>
+		<br>
 <button id="btn">Klik hier voor kleding</button>
+
+
 </body>
 </html>
